@@ -1,0 +1,40 @@
+What are graphs?
+    representing relationships between two objects.
+    We can have Undirected or Directed Graphs.
+
+    Adjacency list or Adjacency matrix
+________________________________________________________________________________
+Given a directed graph, find the vertices with maximum incoming edges (indegree)
+a --> B
+|     |
+v     v
+D --> C
+ \
+   >E         How would you code it up? (easy way with adjacency matrix)
+
+   A B C D E
+A  0 1 0 1 0
+B  0 0 1 0 0
+C  0 0 0 0 0
+D  0 0 0 0 0
+E  0 0 1 0 1
+________________________________________________________________________________
+Graph Traversals
+1.) Depth First Traversal/Search (DFS)
+2.) Breadth First Traversal/Search (BFS)
+
+Trees are graphs but not all graphs are trees.
+________________________________________________________________________________
+BFS
+    - you are traversing from a selected node (source)
+    - traverse the graph layer-wise thus exploring the neighbor nodes
+    - then move towards the next-level neighbor nodes and so on
+    ***Using QUEUE
+
+Simple Rules
+1  Pick a starting node, Mark it as visited, insert it in a queue
+2  while the queue is not empty, pop the node and process the node
+    Process
+        - look at all neighbors of this node who are not yet visited
+        - mark them as visited
+        - insert them in the queue

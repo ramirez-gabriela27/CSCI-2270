@@ -1,0 +1,61 @@
+Priority queues
+    - logical order of elements in the priority queue depends on the priority
+      elements
+________________________________________________________________________________
+HEAPS
+- Tree based data structure
+- COMPLETE BINARY TREE
+    - the tree is completely filled on all levels except possibly the lowest,
+      which is filled from the left up to a point.
+if X is a parent node of Y, then the value of X follows some specific order with
+respect to value of Y and the same order will be followed across the tree
+________________________________________________________________________________
+Think of Heaps as Arrays...
+    - The (binary) heap data structure can be though of as an array object
+    - Each node of the tree corresponds to an element of the array.
+    - The root element will be at arr[0]
+if root = i
+    leftChild = floor(2i+1)
+    rightChild = floor(2i+2)
+if you have a child at ith index, it's parent would be at floor((i-1)/2)
+MinHeap - the value of the parent node will always be less than or equal to the
+          value of child node across the tree and the node with the lowest value
+          will be the root node of tree.
+maxHeap - the value of the parent node will always be greater than or equal to the
+          value of child node across the tree and the node with the highest
+          value will be the root node of the tree.
+________________________________________________________________________________
+HEAPIFY - for maxHeap
+
+void max_heapify(int Arr[], int i, int N){
+    int left = 2*i+1;   //left child
+    int right = 2*i+2;  //right child
+
+    if(left<N && Arr[left] > Arr[i]){
+        largest = left;
+    }else{
+        largest = i;
+    }
+    if(right<N && Arr[right] > Arr[largest]){
+        largest = right;
+    }
+
+    if (largest != i){
+        swap(&Arr[i], &Arr[largest]);
+        max_heapify(Arr,largest,N);
+    }
+}
+
+void build_maxheap(int Arr[]){
+    for (int = i; N/2-1; i>=0; i--){
+        max_heapify(Arr,i,N);
+    }
+}
+
+Extract Max - we return and remove the root and replace it with the last element of
+              the heap in this operation. Since the last element of heap will be
+              placed in index 0, it will violate the property of max-heap. Therefore.
+              we need to perform max_heapify on node 0 and restore the heap property.
+
+Inserting Element - New element is initially appended to the end of the heap (as
+                    the last element of the array). 

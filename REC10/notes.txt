@@ -1,0 +1,48 @@
+Depth First Search
+    - Start from a vertex and travel as deep as possible
+    - Keep track of which vertices have already been visited, don't visit any
+      vertex twice
+    - If there are no more nodes along current path,  you move back on the same
+      path to find other nodes to traverse
+________________________________________________________________________________
+PSEUDOCODE
+DFS(G,u){
+    u.visited = true
+    for each v in G.adj[u]
+        if v.visited == false
+            DFS(G,v)
+}
+________________________________________________________________________________
+* Graphs can be directed and undirected
+In an undirected graph, a connected component is a set of vertices in a graph
+that are linked to each other.
+________________________________________________________________________________
+How to find connected components:
+DFS(G,u){
+    u.visited = true
+    for each v in G.adj[u]
+        if v.visited == false
+            DFS(G,v)
+}
+int(){
+    for each u in G
+        u.visited = false
+    for each u in G
+        if u.visited == false
+            DFS(G, u)
+}
+________________________________________________________________________________
+Bridge of graph:
+    - An edge whose deletion disconnects the graph
+        - A bridge is an edge where if it is removed, it will decrease the number
+          of connected components
+________________________________________________________________________________
+Graph Coloring:
+Assign colors to the vertices of a graph such that no two adjacent vertices share
+the same color ** No similar colors within edges!
+
+Bipartite Graph:
+    don't use more than 2 colors
+________________________________________________________________________________
+Dijkstra
+    ON WRITE UP

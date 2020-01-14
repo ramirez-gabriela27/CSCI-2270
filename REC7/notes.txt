@@ -1,0 +1,63 @@
+TREES
+- trees are well known as a non-linear data structure
+- they don't store data in a linear way unlike linked lists
+
+struct Node
+{
+  int data;
+  Node *left;
+  Node *right;
+};
+________________________________________________________________________________
+TREE TRAVERSAL  -  the process of visiting all the nodes of a trees
+
+3 main steps (order of the steps define the traversal type)
+1.)  process the current node data
+2.)  process left subtree
+3.)  proess right subtree
+
+RECURSION - a function calling itself
+
+-  Pre Order Traversal
+    <root><left><right>
+-  In Order Traversal
+    <left><root><right>
+-  Post Order Traversal
+    <left><right><root>
+________________________________________________________________________________
+
+void preorder(Node* current){
+    //base case
+    if (current == NULL){
+        return;
+    }else{
+        print(current->data);
+        preorder(current->left);
+        preorder(current->right);
+    }
+}
+
+void inorder(Node* current){
+    if(current == NULL){
+        return;
+    }else{
+        inorder(current->left);
+        print(current->data);
+        inorder(current->right);
+    }
+}
+
+void postorder(Node* current){
+    if(current == NULL){
+        return;
+    }else{
+        postorder(current->left);
+        postorder(current->right);
+        print(current->data);
+    }
+}
+________________________________________________________________________________
+Complexity Analysis of Binary Tree Traversals
+-  for all of these traversals - whether done recursively or iteratively we visit
+   every node in the binary tree. That means that we'll get a runtime complexity of
+   O(n) - where n is the number of nodes in the binary tree.

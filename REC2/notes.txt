@@ -1,0 +1,126 @@
+Computer Memory
+    a computer memory location has an address and holds a content
+
+int main(){
+    int a = 10;
+    cout << a << endl; // will print 10
+    cout << &a << endl; // will print hexadecimal address
+    return 0;
+}
+
+& -> gives you the address of a particular variable
+--------------------------------------------------------------------------------
+Pointers
+    Pointers are used in C++ program to access the memory and manipulate the address
+    A pointer variable is used to store address/reference of another variable
+--------------------------------------------------------------------------------
+Dereferencing Operator
+    How to fetch the value from pointer - Use * to dereference
+
+int main(){
+    int a = 10;
+
+    // * here denote p is pointer variable
+    // int* is for an integer variable
+    int* p = &a;
+    cout << a << endl; // will print 10
+    cout << p << endl; // will print address
+
+    // * is used to dereference p
+    cout << *p << endl; // will print 10 -> Dereferencing the address
+
+    return 0;
+}
+When you dereference a pointer, it will give you the value at that address
+
+Ex.
+You want pointer pc to point to the address of c
+You should write this:
+
+int c, *pc;
+pc=&c;
+
+syntax -> type * name
+--------------------------------------------------------------------------------
+Arrays and Pointers
+
+int myarray[20];
+int * mypointer;
+
+mypointer = myarray;  -> will store &arr[0]
+
+if you have an array:
+A[0] A[1] A[2] A[3] A[4] A[5]
+
+the pointers will be
+A   A+1   A+2  A+3  A+4  A+5   -> will give you the addresses of each element
+
+what will A+2 give?
+    address of the third item in Arrays
+what will *(A+2) give?
+    the value A[2]
+what will *(A) give?
+    the value A[0]
+
+--------------------------------------------------------------------------------
+#include <iostream>
+using namespace std;
+void add2 (int num)   //Pass-by-value
+{
+    num = num+2;
+}
+int main(){
+    int a = 10;
+    add2(a);
+    cout << a;
+}
+
+will print out 10, not 12. The function is making a local variable and not changing
+the original copy.
+
+if you wanna return 12 without using a return statement:
+
+#include <iostream>
+using namespace std;
+void add2 (int num)    //Pass-by-Pointer
+{
+    num = num+2;
+}
+int main(){
+    int a = 10;
+    add2(&a);    //you are passing the address
+    cout << a;
+}
+the function now has a local copy of the address, making a change at the address
+
+#include <iostream>
+using namespace std;
+void add2 (int &num)    //Pass-by-reference
+{
+    num = num+2;
+}
+int main(){
+    int a = 10;
+    add2(a);
+    cout << a;
+}
+--------------------------------------------------------------------------------
+Pointer to a struct
+
+struct Distance{
+    int feet;
+    int inch;
+};
+int main(){
+    Distance d;
+    //declare a pointer to Distance variable
+    Distance* ptr;
+    d.feet = 8;
+    d.inch = 6;
+
+    //store the address of d in p
+    ptd = &d;
+    cout <<"Distance=" << (*ptr).feet << "ft" << (*ptr).inch << "inches";
+    cout <<"Distance=" << ptr->feet << "ft" << ptr->inch << "inches";
+    return 0;
+}

@@ -1,0 +1,50 @@
+BST (Binary Search Trees)
+    - Very famous for it's use in search
+    - organized by value (less on left, greater on right)
+________________________________________________________________________________
+FINDING AN ELEMENT IN A BST
+
+struct node* find(struct node* root, int value){
+    // root is null or key is present at root
+    if (root == NULL || root->data == value)
+        return root;
+
+    // Value is greater than root's key
+    if(root->data < value)
+        return find(root->right, value);
+
+    // Value is smaller than root's data
+    return find(root->left, value);
+}
+________________________________________________________________________________
+INSERTING AN ELEMENT INTO A BST
+1. start from root
+2. compare the element that is getting inserted with the root, if it is less than
+   root, then recurse in the left, else recurse in the right
+3. after reaching end, just insert that node at left, if less than current else right.
+________________________________________________________________________________
+DELETING AN ELEMENT FROM BST
+
+CASE 1: Deleting a leaf node:
+    if the node to be deleted is a leaf node: return NULL to its parent.
+    that means, make the corresponding child pointer NULL.
+CASE 2: Deleting a node with one child:
+    if the node to be deleted has one child: in this case we need to send the
+    current nodes child to its parent.
+
+    if the node to be deleted has a LEFT CHILD - Send that left child to the parent
+    of the deleted node. The deleted node's parent will adopt its left child
+
+    if the node to be deleted has a RIGHT CHILD - Send that right child to the parent
+    of the deleted node. The deleted node's parent will adopt its right child
+
+CASE 3: Deleting a node with two children
+    first we need a replacement node for the node to be deleted. We need to do this
+    while maintaining the BST order property. Then we copy the data of the replacement
+    node to the node to be deleted and delete the replacement node. (Now the deletion
+    may recursively reduce to either Case 1, or Case 2)
+________________________________________________________________________________
+Time Complexity of BST Operation
+
+the cost of our algorithms is proportional to the height (h) of the tree.
+h = O(log n)

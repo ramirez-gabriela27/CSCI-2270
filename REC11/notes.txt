@@ -1,0 +1,17 @@
+Why Hashing?
+    Hashing is a technique used for retrieving information as fast as possible
+    - Time Complexity
+        - Under reasonable assumptions, the average time required to search for
+          an element in a hash table is O(1)
+________________________________________________________________________________
+Components of Hashing
+
+Hash Function
+    - is used to transform the key into the index
+    - in cases where the keys are large and cannot be used directly as index
+    - Hash table: data structure where the values are already stored
+________________________________________________________________________________
+Collision Resolution Techniques
+- Separate Chaining
+    - when two or more records hash to the same location, these records are
+      constituted into a singly-linked list called a chain

@@ -1,0 +1,50 @@
+Linked Lists
+________________________________________________________________________________
+- Linear data structure
+- nodes make up linked lists
+- Nodes are structures made up of data and a pointer to another node - the ptr
+  is called next.
+________________________________________________________________________________
+traverse/search a linked list:
+
+Node *temp = head;
+while (temp != NULL){
+    cout << temp-> data;
+
+    // how do you move ahead in the list?
+
+    temp = temp-> next;
+}
+________________________________________________________________________________
+Different from Arrays
+Node allocated dynamically
+
+        Node* newN = new Node; //always returns pointer
+________________________________________________________________________________
+Inserting at the start of the list
+1. create a new node
+2. update the next pointer of that node to start of the list.
+3. update head pointer to new node
+________________________________________________________________________________
+Deleting the last Node
+
+Node* pres = head;
+Node *prev = NULL;
+while(pres->next != NULL){
+    prev = pres;
+    pres = pres -> next;
+}
+prev->next = NULL;
+delete pres;
+
+________________________________________________________________________________
+Deleting by index
+
+Node* pres = head;
+Node *prev = NULL;
+while(...){
+    prev = pres;
+    pres = pres -> next;
+}
+prev->next = pres->next;
+delete pres;

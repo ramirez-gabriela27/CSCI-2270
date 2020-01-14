@@ -1,0 +1,85 @@
+Allocating memory
+
+Static memory allocation
+    Memory for named variables is allocated by the compiler
+    Exact size and type of storage must be known at compile time
+    For standard array declarations, this is why the size has to be constant
+
+int main(){
+    int A[5];   //1. size fixed
+
+    int B[n];   //2. Error.. size must be known at compile time
+}
+
+variables allocating using static memory allocation will be stored in STACK
+
+Say, you want to pass input through command prompt (during runtime)
+    this is when Dynamic memory allocation is placed (HEAPS)
+
+Dynamic memory allocation
+    allows us to create storage blocks or room for variables during run time
+________________________________________________________________________________
+Using new:
+
+Dynamic allocation requires 2 steps:
+    1. creating the dynamic space
+    2. storing its address in a pointer (so that the space can be accessed)
+
+int main(){
+    //dynamic memory allocation
+    int *ptr1 = new int;
+    int *ptr2 = new int[10];
+}
+
+Using delete:
+
+whenever you have new, you must also have delete; it is the programmers job to
+    free up space
+
+delete ptr1;   //delete variable allocated Dynamically
+delet [] ptr2; //delete array allocated Dynamically
+
+*TIP* it is always a good idea to reset pointer to null, unless you are pointing
+    it at another valid target right away. (avoid seg faults)
+        - Dangling pointer : trying to access it might cause seg faults
+        - Memory Leak : free pointer
+________________________________________________________________________________
+So once the space has been dynamically allocated, how do we use it?
+
+int *p = new int;   //dynamic integer, pointed to by p
+*p = 10;            //assigns 10 to dynamic integer
+cout << *p;         // prints 10
+________________________________________________________________________________
+Destructors:
+    member function which destructs or deletes an object.
+
+automatically called when program goes out of scope:
+    1. a function ends
+    2. the program ends
+    3. a block containing local variables ends
+    4. a delete operator is called
+________________________________________________________________________________
+class DestructorExample{
+    private:
+        char *s;
+        int size;
+    public:
+        DestructorExample(char *);  //constructor
+        ~DestructorExample();       //destructor
+};
+DestructorExample::DestructorExample(char *c){
+    size = strlen(c);
+    s = new char[size+1];
+    strcpy(s,c);
+}
+
+DestructorExample::~DestructorExample(){
+    delete[]s;
+}
+________________________________________________________________________________
+Array Doubling:
+
+1. allocate a new array and store it in a temporary pointer
+2. copy over the previous values that you want to keep
+3. delete the old array
+4. Chane the arrayPtr and capacity to the new array and the new size

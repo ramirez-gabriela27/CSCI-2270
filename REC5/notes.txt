@@ -1,0 +1,53 @@
+Arrays vs Linked Lists
+
+Arrays:
+    - requires contiguous allocation of memory
+    - The allocated memory is equal to the upper limit irrespective of the usage
+    - Not useful if insertions and deletions are frequent
+    - allows random and sequential access
+
+Linked Lists:
+    - Does not require contiguous memory allocation
+    - It is dynamic and flexible i.e. can expand and contract its size
+    - useful if insertions and deletions are frequent
+    - allows sequential access
+________________________________________________________________________________
+Stacks
+    A stack is a container of objects that are inserted and removed according to
+    the last-in first-out (LIFO) principle
+
+    Two main operations:
+        PUSH - add
+        POP - remove
+________________________________________________________________________________
+class Stack{
+    private:
+        top    // top of the stack
+        data   // stack data (in array or list)
+    public:
+        init()
+        push(value)
+        pop()
+        isFull()
+        isEmpty()
+}
+________________________________________________________________________________
+Queues
+    - First-in First-out (FIFO) implementation
+    - ENQUEUE: insert and item ino the back of the queue
+    - DEQUEUE: removing the front item
+________________________________________________________________________________
+class Queue{
+    private:
+        head
+        tail
+        queueSize
+        capacity
+    public:
+        init()
+        enqueue(value)
+        dequeue()
+        isFull()
+        isEmpty()
+}
+________________________________________________________________________________
